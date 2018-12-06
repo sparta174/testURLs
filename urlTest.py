@@ -9,7 +9,7 @@ import requests
 from argparse import ArgumentParser
 import shodan
 
-api = shodan.Shodan('yXfN7k2pCzeUj9YkKnIaSosLoQnjQfFe')
+api = shodan.Shodan('')
 parser = ArgumentParser(
     description='A script to check out some wacky urls :) ',
     epilog='Try it out!'
