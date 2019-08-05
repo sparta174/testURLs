@@ -9,7 +9,7 @@ import requests
 from argparse import ArgumentParser
 import shodan
 
-api = shodan.Shodan('')
+api = shodan.Shodan('yXfN7k2pCzeUj9YkKnIaSosLoQnjQfFe')
 parser = ArgumentParser(
     description='A script to check out some wacky urls :) ',
     epilog='Try it out!'
@@ -56,19 +56,36 @@ def sshodan_link(link):
         print('Results found: {}'.format(results['total']))
         for result in results['matches']:
             host = api.host(result['ip_str'])
-            print("""IP: {}
+        print("""
+                IP: {}
                 Organization: {}
                 Operating System: {}
-                Host Names: {}
                 City: {}
                 Region Code: {}
-                Country Name: {}
+                Country_Name: {}
+                HostNames: {}
+                CN: {}
                 Vulns: {}
-                """.format(host['ip_str'], host.get('org', 'n/a'), host.get('os', 'n/a'), host.get('city', 'n/a'),
-                           host.get('region_code', 'n/a'), host.get('country_name', 'n/a'),
-                           host.get('hostnames', 'n/a'), host.get('vulns', 'n/a')))
-            # print(result['data'])
-            print('')
+                Ports: {}
+                Product: {}
+                ISP: {}
+                DeviceType: {}
+                Domains: {}
+
+        """.format(host['ip_str'], 
+            host.get('org', 'n/a'), 
+            host.get('os', 'n/a'), 
+            host.get('city', 'n/a'), 
+            host.get('region_code', 'n/a'), 
+            host.get('country_name', 'n/a'), 
+            host.get('hostnames', 'n/a'),
+            host.get('CN', 'n/a'),
+            host.get('vulns', 'n/a'),
+            host.get('ports', 'n/a'),
+            host.get('product', 'n/a'),
+            host.get('isp', 'n/a'),
+            host.get('devicetype', 'n/a'),
+            host.get('domains', 'n/a')))
     except shodan.APIError:
         print('Error: {}'.format(shodan.APIError))
 
@@ -80,15 +97,32 @@ def sshodan_host(ipaddr):
                 IP: {}
                 Organization: {}
                 Operating System: {}
-                Host Names: {}
                 City: {}
                 Region Code: {}
-                Country Name: {}
+                Country_Name: {}
+                HostNames: {}
+                CN: {}
                 Vulns: {}
+                Ports: {}
+                Product: {}
+                ISP: {}
+                DeviceType: {}
+                Domains: {}
 
-        """.format(host['ip_str'], host.get('org', 'n/a'), host.get('os', 'n/a'), host.get('city', 'n/a'),
-                   host.get('region_code', 'n/a'), host.get('country_name', 'n/a'), host.get('hostnames', 'n/a'),
-                   host.get('vulns', 'n/a')))
+        """.format(host['ip_str'], 
+            host.get('org', 'n/a'), 
+            host.get('os', 'n/a'), 
+            host.get('city', 'n/a'), 
+            host.get('region_code', 'n/a'), 
+            host.get('country_name', 'n/a'), 
+            host.get('hostnames', 'n/a'),
+            host.get('CN', 'n/a'),
+            host.get('vulns', 'n/a'),
+            host.get('ports', 'n/a'),
+            host.get('product', 'n/a'),
+            host.get('isp', 'n/a'),
+            host.get('devicetype', 'n/a'),
+            host.get('domains', 'n/a')))
     except shodan.APIError:
         print('Error: {}'.format(shodan.APIError))
 
